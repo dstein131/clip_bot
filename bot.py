@@ -35,12 +35,12 @@ async def add_clip(ctx, url: str, timestamp: str, *, description: str):
 # Command to list all clip suggestions
 @bot.command(name='listclips')
 async def list_clips(ctx):
-    # Only allow the bot to list clips in the 'clip-suggestions' channel
-    if ctx.channel.name != 'clip-suggestions':
-        await ctx.send("Please use the `clip-suggestions` channel for listing clip suggestions.")
+    # Only allow the bot to list clips in the 'private-clip-suggestions' channel
+    if ctx.channel.name != 'private-clip-suggestions':
+        await ctx.send("Please use the `private-clip-suggestions` channel for listing clip suggestions.")
         return
 
-    channel = discord.utils.get(ctx.guild.text_channels, name='clip-suggestions')
+    channel = discord.utils.get(ctx.guild.text_channels, name='private-clip-suggestions')
     if channel:
         messages = await channel.history(limit=100).flatten()
         if messages:
@@ -53,7 +53,7 @@ async def list_clips(ctx):
             await ctx.send("No clip suggestions found.")
     else:
         print(f"Available channels: {[c.name for c in ctx.guild.text_channels]}")  # Debugging: print available channels
-        await ctx.send("Channel 'clip-suggestions' not found!")
+        await ctx.send("Channel 'private-clip-suggestions' not found!")
 
 
 bot.run('DISCORD_BOT_TOKEN')
