@@ -35,7 +35,6 @@ async def kek(ctx):
     try:
         print(f'!kek command received in channel: {ctx.channel} by user: {ctx.author}')
         memes = [
-            "https://i.imgur.com/w3duR07.png",
             "https://i.imgur.com/2vQtZBb.png",
             "https://imgur.com/a/FSCkNSG",
             "https://imgur.com/a/9sOZSgs",
