@@ -171,7 +171,7 @@ async def on_message(message):
 async def on_command_error(ctx, error):
     print(f'Error: {error}')
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send("Command not found.")
+        await ctx.send("Command not found. Type `!List` to see all available commands.")
     else:
         await ctx.send("An error occurred.")
         raise error
