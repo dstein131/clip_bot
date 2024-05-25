@@ -67,7 +67,7 @@ async def april(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: Nic
-@bot.command(name='nic')
+@bot.command(name='Nic')
 async def nic(ctx):
     try:
         print(f'!nic command received in channel: {ctx.channel} by user: {ctx.author}')
@@ -83,7 +83,7 @@ async def nic(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: Lew
-@bot.command(name='lew')
+@bot.command(name='Lew')
 async def lew(ctx):
     try:
         print(f'!lew command received in channel: {ctx.channel} by user: {ctx.author}')
@@ -102,7 +102,7 @@ async def lew(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # Command to list all commands
-@bot.command(name='list')
+@bot.command(name='List')
 async def list_commands(ctx):
     commands_list = [command.name for command in bot.commands if command.name not in ['kek', 'help']]
     commands_string = "\n".join(commands_list)
