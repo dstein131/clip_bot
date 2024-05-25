@@ -39,6 +39,7 @@ async def kek(ctx):
     except Exception as e:
         print(f'Error in !kek command: {e}')
         await ctx.send("An error occurred while processing the command.")
+        
 
 # Error Handling
 @bot.event
