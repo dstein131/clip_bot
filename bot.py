@@ -130,7 +130,7 @@ async def steeltoe(ctx):
 @bot.command(name='List')
 async def list_commands(ctx):
     commands_list = [command.name for command in bot.commands if command.name not in ['kek', 'help']]
-    commands_string = "\n".join(commands_list)
+    commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
 
 # Respond to regalsalvatore
