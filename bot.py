@@ -37,8 +37,8 @@ async def kek(ctx):
         memes = [
             "https://imgur.com/gallery/every-morrissey-song-uXxI3Zr#/t/morrissey",
             "https://imgur.com/gallery/morrisseys-dying-hyqtZ92#/t/morrissey",
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fbucktickzone%2Fstatus%2F563749346953285632&psig=AOvVaw1qEP_yGDEaX4QjlD4OpEna&ust=1716744475174000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIj569apqYYDFQAAAAAdAAAAABAE".
-            "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg",
+            "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fbucktickzone%2Fstatus%2F563749346953285632&psig=AOvVaw1qEP_yGDEaX4QjlD4OpEna&ust=1716744475174000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIj569apqYYDFQAAAAAdAAAAABAE",
+            "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg"
         ]
         selected_meme = random.choice(memes)
         print(f'Sending meme: {selected_meme}')
