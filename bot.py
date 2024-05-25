@@ -91,7 +91,6 @@ async def lew(ctx):
             "https://i.imgur.com/ucJ1W0y.gif",
             "https://i.imgur.com/cvxUeHO.png",
             "https://i.imgur.com/8QKPnX4.jpeg",
-
             # Add more image URLs here
         ]
         selected_image = random.choice(lew_images)
@@ -106,7 +105,7 @@ async def lew(ctx):
 async def list_commands(ctx):
     commands_list = [command.name for command in bot.commands if command.name not in ['kek', 'help']]
     commands_string = "\n".join(commands_list)
-    await ctx.send(f"Available commands:\n{commands_string}")
+    await ctx.send(f"```Available commands:\n{commands_string}```")
 
 # Respond to regalsalvatore
 @bot.event
