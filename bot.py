@@ -4,7 +4,8 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import random
 
-
+# Load environment variables from a .env file
+load_dotenv()
 
 # Get the bot token from environment variable
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
@@ -22,6 +23,7 @@ async def on_ready():
 # Fun Feature: Kek
 @bot.command(name='kek')
 async def kek(ctx):
+    print(f'!kek command received in channel: {ctx.channel}')
     memes = [
         "https://i.imgur.com/w3duR07.png",
         "https://i.imgur.com/2vQtZBb.png",
