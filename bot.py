@@ -16,6 +16,8 @@ if not TOKEN:
 intents = discord.Intents.default()
 intents.messages = True
 intents.message_content = True  # Ensure message content intent is enabled
+intents.guilds = True
+intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -39,7 +41,13 @@ async def kek(ctx):
     except Exception as e:
         print(f'Error in !kek command: {e}')
         await ctx.send("An error occurred while processing the command.")
-        
+
+# Respond to regalsalvatore
+@bot.event
+async def on_message(message):
+    if message.author.name == 'regalsalvatore' and not message.author.bot:
+        await message.channel.send('jajajajaja')
+    await bot.process_commands(message)
 
 # Error Handling
 @bot.event
