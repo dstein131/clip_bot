@@ -82,6 +82,25 @@ async def nic(ctx):
         print(f'Error in !nic command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: Lew
+@bot.command(name='lew')
+async def lew(ctx):
+    try:
+        print(f'!lew command received in channel: {ctx.channel} by user: {ctx.author}')
+        lew_images = [
+            "https://i.imgur.com/ucJ1W0y.gif",
+            "https://i.imgur.com/cvxUeHO.png",
+            "https://i.imgur.com/8QKPnX4.jpeg",
+
+            # Add more image URLs here
+        ]
+        selected_image = random.choice(lew_images)
+        print(f'Sending Lew image: {selected_image}')
+        await ctx.send(selected_image)
+    except Exception as e:
+        print(f'Error in !lew command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
 # Command to list all commands
 @bot.command(name='list')
 async def list_commands(ctx):
