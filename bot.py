@@ -55,6 +55,7 @@ async def april(ctx):
         april_images = [
             "https://i.imgur.com/JJVOpgz.png",
             "https://i.imgur.com/r95GXHQ.png",
+            "https://i.imgur.com/k6FatNM.png",
             # Add more image URLs here
         ]
         selected_image = random.choice(april_images)
