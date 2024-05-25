@@ -36,8 +36,8 @@ async def kek(ctx):
         print(f'!kek command received in channel: {ctx.channel} by user: {ctx.author}')
         memes = [
             "https://i.imgur.com/2vQtZBb.png",
-            "https://imgur.com/a/FSCkNSG",
-            "https://imgur.com/a/9sOZSgs",
+            "https://i.imgur.com/V08th3K.jpeg",
+            "https://i.imgur.com/4iwihon.jpeg",
             "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg"
         ]
         selected_meme = random.choice(memes)
@@ -51,7 +51,15 @@ async def kek(ctx):
 @bot.event
 async def on_message(message):
     if message.author.name == 'regalsalvatore' and not message.author.bot:
+        memes = [
+            "https://i.imgur.com/2vQtZBb.png",
+            "https://i.imgur.com/V08th3K.jpeg",
+            "https://i.imgur.com/4iwihon.jpeg",
+            "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg"
+        ]
+        selected_meme = random.choice(memes)
         await message.channel.send('jajajajaja')
+        await message.channel.send(selected_meme)
     await bot.process_commands(message)
 
 # Error Handling
