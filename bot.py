@@ -85,7 +85,7 @@ async def nic(ctx):
 # Command to list all commands
 @bot.command(name='list')
 async def list_commands(ctx):
-    commands_list = [command.name for command in bot.commands if command.name != 'kek']
+    commands_list = [command.name for command in bot.commands if command.name not in ['kek', 'help']]
     commands_string = "\n".join(commands_list)
     await ctx.send(f"Available commands:\n{commands_string}")
 
