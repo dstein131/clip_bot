@@ -29,7 +29,7 @@ async def on_ready():
 @bot.command(name='kek')
 async def kek(ctx):
     if ctx.author.name != 'sirvosef':
-        await ctx.send("You don't have permission to use this command.")
+        await ctx.send("Only Lord Vosef may do this.")
         return
 
     try:
