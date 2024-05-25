@@ -66,6 +66,22 @@ async def april(ctx):
         print(f'Error in !April command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: Nic
+@bot.command(name='nic')
+async def nic(ctx):
+    try:
+        print(f'!nic command received in channel: {ctx.channel} by user: {ctx.author}')
+        nic_images = [
+            "https://i.imgur.com/ohG24kL.gif",
+            # Add more image URLs here
+        ]
+        selected_image = random.choice(nic_images)
+        print(f'Sending Nic image: {selected_image}')
+        await ctx.send(selected_image)
+    except Exception as e:
+        print(f'Error in !nic command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
 # Command to list all commands
 @bot.command(name='list')
 async def list_commands(ctx):
