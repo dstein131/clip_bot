@@ -37,7 +37,6 @@ async def kek(ctx):
         memes = [
             "https://i.imgur.com/w3duR07.png",
             "https://i.imgur.com/2vQtZBb.png",
-            "https://i.imgur.com/AfFp7pu.png",
             "https://imgur.com/a/FSCkNSG",
             "https://imgur.com/a/9sOZSgs",
             "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg"
