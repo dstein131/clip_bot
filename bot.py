@@ -56,8 +56,7 @@ async def april(ctx):
             "https://i.imgur.com/JJVOpgz.png",
             "https://i.imgur.com/r95GXHQ.png",
             "https://i.imgur.com/k6FatNM.png",
-            "https://i.imgur.com/BGvYhvE.jpeg",
-            # Add more image URLs here
+            "https://i.imgur.com/BGvYhvE.jpeg"
         ]
         selected_image = random.choice(april_images)
         print(f'Sending April image: {selected_image}')
@@ -72,8 +71,7 @@ async def nic(ctx):
     try:
         print(f'!nic command received in channel: {ctx.channel} by user: {ctx.author}')
         nic_images = [
-            "https://i.imgur.com/ohG24kL.gif",
-            # Add more image URLs here
+            "https://i.imgur.com/ohG24kL.gif"
         ]
         selected_image = random.choice(nic_images)
         print(f'Sending Nic image: {selected_image}')
@@ -90,8 +88,7 @@ async def lew(ctx):
         lew_images = [
             "https://i.imgur.com/ucJ1W0y.gif",
             "https://i.imgur.com/cvxUeHO.png",
-            "https://i.imgur.com/8QKPnX4.jpeg",
-            # Add more image URLs here
+            "https://i.imgur.com/8QKPnX4.jpeg"
         ]
         selected_image = random.choice(lew_images)
         print(f'Sending Lew image: {selected_image}')
@@ -106,8 +103,7 @@ async def vosef(ctx):
     try:
         print(f'!Vosef command received in channel: {ctx.channel} by user: {ctx.author}')
         vosef_images = [
-            "https://i.imgur.com/N5RwnLZ.jpeg",  
-            # Add more image URLs here
+            "https://i.imgur.com/N5RwnLZ.jpeg"
         ]
         selected_image = random.choice(vosef_images)
         print(f'Sending Vosef image: {selected_image}')
@@ -129,7 +125,7 @@ async def steeltoe(ctx):
 # Command to list all commands
 @bot.command(name='List')
 async def list_commands(ctx):
-    commands_list = [command.name for command in bot.commands if command.name not in ['kek', 'help']]
+    commands_list = sorted([command.name for command in bot.commands if command.name not in ['kek', 'help']])
     commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
 
