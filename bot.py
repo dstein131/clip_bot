@@ -23,17 +23,24 @@ async def on_ready():
 # Fun Feature: Kek
 @bot.command(name='kek')
 async def kek(ctx):
-    print(f'!kek command received in channel: {ctx.channel}')
-    memes = [
-        "https://i.imgur.com/w3duR07.png",
-        "https://i.imgur.com/2vQtZBb.png",
-        "https://i.imgur.com/AfFp7pu.png"
-    ]
-    await ctx.send(random.choice(memes))
+    try:
+        print(f'!kek command received in channel: {ctx.channel} by user: {ctx.author}')
+        memes = [
+            "https://i.imgur.com/w3duR07.png",
+            "https://i.imgur.com/2vQtZBb.png",
+            "https://i.imgur.com/AfFp7pu.png"
+        ]
+        selected_meme = random.choice(memes)
+        print(f'Sending meme: {selected_meme}')
+        await ctx.send(selected_meme)
+    except Exception as e:
+        print(f'Error in !kek command: {e}')
+        await ctx.send("An error occurred while processing the command.")
 
 # Error Handling
 @bot.event
 async def on_command_error(ctx, error):
+    print(f'Error: {error}')
     if isinstance(error, commands.CommandNotFound):
         await ctx.send("Command not found.")
     else:
