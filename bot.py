@@ -122,6 +122,16 @@ async def steeltoe(ctx):
         print(f'Error in !SteelToe command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: Felicia
+@bot.command(name='Felicia')
+async def felicia(ctx):
+    try:
+        print(f'!Felicia command received in channel: {ctx.channel} by user: {ctx.author}')
+        await ctx.send("https://i.imgur.com/H2l18ml.gif")
+    except Exception as e:
+        print(f'Error in !Felicia command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
 # Command to list all commands
 @bot.command(name='List')
 async def list_commands(ctx):
