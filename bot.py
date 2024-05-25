@@ -176,7 +176,7 @@ async def list_commands(ctx):
 async def on_message(message):
     if message.author.name == 'regalsalvatore' and not message.author.bot:
         await message.channel.send('jajajajaja')
-    if message.author.name == 'sirvosef' and not message.author.bot:
+    if message.author.name == 'natclo5710' and not message.author.bot:
         await message.add_reaction('🇬')
         await message.add_reaction('🇦')
         await message.add_reaction('🇾')
