@@ -100,6 +100,22 @@ async def lew(ctx):
         print(f'Error in !lew command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: Vosef
+@bot.command(name='Vosef')
+async def vosef(ctx):
+    try:
+        print(f'!Vosef command received in channel: {ctx.channel} by user: {ctx.author}')
+        vosef_images = [
+            "https://i.imgur.com/N5RwnLZ.jpeg",  
+            # Add more image URLs here
+        ]
+        selected_image = random.choice(vosef_images)
+        print(f'Sending Vosef image: {selected_image}')
+        await ctx.send(selected_image)
+    except Exception as e:
+        print(f'Error in !Vosef command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
 # Command to list all commands
 @bot.command(name='List')
 async def list_commands(ctx):
