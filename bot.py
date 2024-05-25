@@ -92,7 +92,6 @@ async def lew(ctx):
             "https://i.imgur.com/8QKPnX4.jpeg",
             "https://i.imgur.com/vmt0pqa.jpeg",
             "https://i.imgur.com/TJEyVCr.jpeg",
-
         ]
         selected_image = random.choice(lew_images)
         print(f'Sending Lew image: {selected_image}')
@@ -145,8 +144,6 @@ async def kb(ctx):
             "https://imgur.com/yOIsxni",
             "https://i.imgur.com/nXszoyR.png",
             "https://i.imgur.com/QxjvzQx.png",
-
-
         ]
         selected_image = random.choice(kb_images)
         print(f'Sending KB image: {selected_image}')
@@ -174,11 +171,14 @@ async def list_commands(ctx):
     commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
 
-# Respond to regalsalvatore
+# Respond to regalsalvatore and natclo5710
 @bot.event
 async def on_message(message):
     if message.author.name == 'regalsalvatore' and not message.author.bot:
         await message.channel.send('jajajajaja')
+    if message.author.name == 'sirvosef' and not message.author.bot:
+        modified_message = f"{message.content} :regional_indicator_g: :regional_indicator_a: :regional_indicator_y:"
+        await message.channel.send(modified_message)
     await bot.process_commands(message)
 
 # Error Handling
