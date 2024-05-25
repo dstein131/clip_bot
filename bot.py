@@ -4,8 +4,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import random
 
-# Load environment variables from a .env file
-load_dotenv()
+
 
 # Get the bot token from environment variable
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
