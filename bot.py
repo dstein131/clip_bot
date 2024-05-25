@@ -152,6 +152,18 @@ async def kb(ctx):
         print(f'Error in !KB command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: Moody
+@bot.command(name='Moody')
+async def moody(ctx):
+    try:
+        print(f'!Moody command received in channel: {ctx.channel} by user: {ctx.author}')
+        moody_image = "https://i.imgur.com/NvXIKbQ.jpeg"
+        print(f'Sending Moody image: {moody_image}')
+        await ctx.send(moody_image)
+    except Exception as e:
+        print(f'Error in !Moody command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
 # Command to list all commands
 @bot.command(name='List')
 async def list_commands(ctx):
