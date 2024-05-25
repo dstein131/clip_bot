@@ -19,7 +19,7 @@ intents.message_content = True  # Ensure message content intent is enabled
 intents.guilds = True
 intents.members = True
 
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents, case_insensitive=True)
 
 @bot.event
 async def on_ready():
