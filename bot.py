@@ -116,6 +116,16 @@ async def vosef(ctx):
         print(f'Error in !Vosef command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: SteelToe
+@bot.command(name='SteelToe')
+async def steeltoe(ctx):
+    try:
+        print(f'!SteelToe command received in channel: {ctx.channel} by user: {ctx.author}')
+        await ctx.send("https://www.youtube.com/watch?v=0WAghhHjGA0&list=PLmXO3OWrzyK2lrh9wsL3ITq9oUcVgoZZS")
+    except Exception as e:
+        print(f'Error in !SteelToe command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
 # Command to list all commands
 @bot.command(name='List')
 async def list_commands(ctx):
