@@ -139,7 +139,7 @@ async def kb(ctx):
     try:
         print(f'!KB command received in channel: {ctx.channel} by user: {ctx.author}')
         kb_images = [
-            "https://i.imgur.com/36hARBh.gif",
+            "https://imgur.com/yOIsxni",
             "https://i.imgur.com/nXszoyR.png",
             "https://i.imgur.com/QxjvzQx.png",
 
