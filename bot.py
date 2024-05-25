@@ -63,6 +63,13 @@ async def april(ctx):
         print(f'Error in !April command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# Command to list all commands
+@bot.command(name='list')
+async def list_commands(ctx):
+    commands_list = [command.name for command in bot.commands]
+    commands_string = "\n".join(commands_list)
+    await ctx.send(f"Available commands:\n{commands_string}")
+
 # Respond to regalsalvatore
 @bot.event
 async def on_message(message):
