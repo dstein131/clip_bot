@@ -47,6 +47,22 @@ async def kek(ctx):
         print(f'Error in !kek command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: April
+@bot.command(name='April')
+async def april(ctx):
+    try:
+        print(f'!April command received in channel: {ctx.channel} by user: {ctx.author}')
+        april_images = [
+            "https://i.imgur.com/JJVOpgz.png"
+            # Add more image URLs here
+        ]
+        selected_image = random.choice(april_images)
+        print(f'Sending April image: {selected_image}')
+        await ctx.send(selected_image)
+    except Exception as e:
+        print(f'Error in !April command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
 # Respond to regalsalvatore
 @bot.event
 async def on_message(message):
