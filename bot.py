@@ -177,8 +177,9 @@ async def on_message(message):
     if message.author.name == 'regalsalvatore' and not message.author.bot:
         await message.channel.send('jajajajaja')
     if message.author.name == 'sirvosef' and not message.author.bot:
-        modified_message = f"{message.content} :regional_indicator_g: :regional_indicator_a: :regional_indicator_y:"
-        await message.channel.send(modified_message)
+        await message.add_reaction('🇬')
+        await message.add_reaction('🇦')
+        await message.add_reaction('🇾')
     await bot.process_commands(message)
 
 # Error Handling
