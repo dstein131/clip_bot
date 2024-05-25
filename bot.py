@@ -53,7 +53,8 @@ async def april(ctx):
     try:
         print(f'!April command received in channel: {ctx.channel} by user: {ctx.author}')
         april_images = [
-            "https://i.imgur.com/JJVOpgz.png"
+            "https://i.imgur.com/JJVOpgz.png",
+            "https://i.imgur.com/r95GXHQ.png",
             # Add more image URLs here
         ]
         selected_image = random.choice(april_images)
