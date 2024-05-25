@@ -2,6 +2,7 @@ import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
+import random
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -19,44 +20,24 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def on_ready():
     print(f'Bot is ready. Logged in as {bot.user}')
 
-@bot.command(name='addclip')
-async def add_clip(ctx, url: str, timestamp: str, *, description: str):
-    if ctx.channel.name != 'clip-suggestions':
-        await ctx.send("Please use the `clip-suggestions` channel for adding clip suggestions.")
-        return
+# Fun Feature: Kek
+@bot.command(name='kek')
+async def kek(ctx):
+    memes = [
+        "https://i.imgur.com/w3duR07.png",
+        "https://i.imgur.com/2vQtZBb.png",
+        "https://i.imgur.com/AfFp7pu.png"
+    ]
+    await ctx.send(random.choice(memes))
 
-    channel = discord.utils.get(ctx.guild.text_channels, name='clip-suggestions')
-    if channel:
-        embed = discord.Embed(title="New Clip Suggestion", color=discord.Color.blue())
-        embed.add_field(name="URL", value=url, inline=False)
-        embed.add_field(name="Timestamp", value=timestamp, inline=True)
-        embed.add_field(name="Description", value=description, inline=True)
-        embed.set_footer(text=f"Suggested by {ctx.author}")
-        await channel.send(embed=embed)
-        await ctx.send("Clip suggestion added!")
+# Error Handling
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send("Command not found.")
     else:
-        print(f"Available channels: {[c.name for c in ctx.guild.text_channels]}")  # Debugging: print available channels
-        await ctx.send("Channel 'clip-suggestions' not found!")
+        await ctx.send("An error occurred.")
+        raise error
 
-@bot.command(name='listclips')
-async def list_clips(ctx):
-    if ctx.channel.name != 'clip-suggestions':
-        await ctx.send("Please use the `clip-suggestions` channel for listing clip suggestions.")
-        return
-
-    channel = discord.utils.get(ctx.guild.text_channels, name='clip-suggestions')
-    if channel:
-        messages = await channel.history(limit=100).flatten()
-        if messages:
-            embed = discord.Embed(title="Clip Suggestions", color=discord.Color.green())
-            for msg in messages:
-                if msg.embeds:
-                    embed.add_field(name=msg.embeds[0].fields[1].value, value=msg.embeds[0].fields[2].value, inline=False)
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("No clip suggestions found.")
-    else:
-        print(f"Available channels: {[c.name for c in ctx.guild.text_channels]}")  # Debugging: print available channels
-        await ctx.send("Channel 'clip-suggestions' not found!")
-
+# Automatically generated help command is included by default
 bot.run(TOKEN)
