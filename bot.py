@@ -10,6 +10,9 @@ load_dotenv()
 # Get the bot token from environment variable
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 
+if not TOKEN:
+    raise ValueError("No token provided. Set the DISCORD_BOT_TOKEN environment variable.")
+
 intents = discord.Intents.default()
 intents.messages = True
 intents.message_content = True  # Ensure message content intent is enabled
@@ -47,5 +50,5 @@ async def on_command_error(ctx, error):
         await ctx.send("An error occurred.")
         raise error
 
-# Automatically generated help command is included by default
+# Run the bot
 bot.run(TOKEN)
