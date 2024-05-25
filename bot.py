@@ -35,11 +35,12 @@ async def kek(ctx):
     try:
         print(f'!kek command received in channel: {ctx.channel} by user: {ctx.author}')
         memes = [
+            "https://i.imgur.com/w3duR07.png",
+            "https://i.imgur.com/2vQtZBb.png",
+            "https://i.imgur.com/AfFp7pu.png",
             "https://imgur.com/a/FSCkNSG",
             "https://imgur.com/a/9sOZSgs",
-            "https://imgur.com/gallery/every-morrissey-song-uXxI3Zr#/t/morrissey",
-            "https://imgur.com/gallery/morrisseys-dying-hyqtZ92#/t/morrissey",
-            "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg",
+            "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg"
         ]
         selected_meme = random.choice(memes)
         print(f'Sending meme: {selected_meme}')
