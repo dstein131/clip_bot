@@ -56,7 +56,8 @@ async def april(ctx):
             "https://i.imgur.com/JJVOpgz.png",
             "https://i.imgur.com/r95GXHQ.png",
             "https://i.imgur.com/k6FatNM.png",
-            "https://i.imgur.com/BGvYhvE.jpeg"
+            "https://i.imgur.com/BGvYhvE.jpeg",
+            "https://i.imgur.com/3xqTqpq.gif",
         ]
         selected_image = random.choice(april_images)
         print(f'Sending April image: {selected_image}')
@@ -88,8 +89,7 @@ async def lew(ctx):
         lew_images = [
             "https://i.imgur.com/ucJ1W0y.gif",
             "https://i.imgur.com/cvxUeHO.png",
-            "https://i.imgur.com/8QKPnX4.jpeg",
-            "https://i.imgur.com/36hARBh.gif",
+            "https://i.imgur.com/8QKPnX4.jpeg"
         ]
         selected_image = random.choice(lew_images)
         print(f'Sending Lew image: {selected_image}')
@@ -131,6 +131,25 @@ async def felicia(ctx):
         await ctx.send("https://i.imgur.com/H2l18ml.gif")
     except Exception as e:
         print(f'Error in !Felicia command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
+# New Feature: KB
+@bot.command(name='KB')
+async def kb(ctx):
+    try:
+        print(f'!KB command received in channel: {ctx.channel} by user: {ctx.author}')
+        kb_images = [
+            "https://i.imgur.com/36hARBh.gif",
+            "https://i.imgur.com/nXszoyR.png",
+            "https://i.imgur.com/QxjvzQx.png",
+
+
+        ]
+        selected_image = random.choice(kb_images)
+        print(f'Sending KB image: {selected_image}')
+        await ctx.send(selected_image)
+    except Exception as e:
+        print(f'Error in !KB command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
 # Command to list all commands
