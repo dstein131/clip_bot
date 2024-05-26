@@ -211,9 +211,18 @@ async def list_commands(ctx):
     commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
 
-# Respond to regalsalvatore and natclo5710
+# Respond to specific commands
 @bot.event
 async def on_message(message):
+    # Check if the message starts with any of the specified commands
+    forbidden_commands = ['!pussy', '!ass', '!tits', '!nudes', '!xxx', '!cock', '!dick', '!fuck', '!shit']
+    if message.content.lower() in forbidden_commands:
+        await message.channel.send('Go Pee Pee, Go Night Night Incel.')
+    else:
+        # Process commands normally
+        await bot.process_commands(message)
+
+    # Additional responses to specific users
     if message.author.name == 'regalsalvatore' and not message.author.bot:
         await message.channel.send('jajajajaja')
     if message.author.name == 'natclo5710' and not message.author.bot:
@@ -221,7 +230,6 @@ async def on_message(message):
             await message.add_reaction('🇬')
             await message.add_reaction('🇦')
             await message.add_reaction('🇾')
-    await bot.process_commands(message)
 
 # Error Handling
 @bot.event
@@ -248,7 +256,7 @@ async def on_command_error(ctx, error):
     user_data['last_time'] = now
 
     if user_data['count'] >= 2:
-        await ctx.send("Don't be a dumb dumb")
+        await ctx.send("Don't be a dumb dumb.")
         user_data['blocked_until'] = now + timedelta(minutes=30)
         user_data['count'] = 0
     else:
