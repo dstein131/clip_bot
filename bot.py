@@ -215,7 +215,7 @@ async def list_commands(ctx):
 @bot.event
 async def on_message(message):
     # Check if the message starts with any of the specified commands
-    forbidden_commands = ['!pussy', '!ass', '!tits', '!nudes', '!xxx', '!cock', '!dick', '!fuck', '!shit']
+    forbidden_commands = ['!pussy', '!ass', '!tits', '!nudes', '!xxx', '!cock', '!porn', '!nudes', '!dick', '!fuck', '!shit']
     if message.content.lower() in forbidden_commands:
         await message.channel.send('Go Pee Pee, Go Night Night Incel.')
     else:
