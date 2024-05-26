@@ -158,6 +158,7 @@ async def kb(ctx):
             "https://imgur.com/yOIsxni",
             "https://i.imgur.com/nXszoyR.png",
             "https://i.imgur.com/QxjvzQx.png",
+            "https://i.imgur.com/hknTfbn.jpeg",
         ]
         selected_image = random.choice(kb_images)
         print(f'Sending KB image: {selected_image}')
