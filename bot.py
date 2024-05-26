@@ -73,7 +73,8 @@ async def nic(ctx):
     try:
         print(f'!nic command received in channel: {ctx.channel} by user: {ctx.author}')
         nic_images = [
-            "https://i.imgur.com/ohG24kL.gif"
+            "https://i.imgur.com/ohG24kL.gif",
+            "https://i.imgur.com/fJETMJf.gif",
         ]
         selected_image = random.choice(nic_images)
         print(f'Sending Nic image: {selected_image}')
