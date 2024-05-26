@@ -130,7 +130,13 @@ async def steeltoe(ctx):
 async def felicia(ctx):
     try:
         print(f'!Felicia command received in channel: {ctx.channel} by user: {ctx.author}')
-        await ctx.send("https://i.imgur.com/H2l18ml.gif")
+        felicia_images = [
+            "https://i.imgur.com/H2l18ml.gif",
+            "https://i.imgur.com/PTPhfBq.png"
+        ]
+        selected_image = random.choice(felicia_images)
+        print(f'Sending Felicia image: {selected_image}')
+        await ctx.send(selected_image)
     except Exception as e:
         print(f'Error in !Felicia command: {e}')
         await ctx.send("An error occurred while processing the command.")
