@@ -99,8 +99,6 @@ async def lew(ctx):
             "https://i.imgur.com/OvJLNDp.png",
             "https://i.imgur.com/qFvZ7Xp.png",
             "https://i.imgur.com/l417K0B.png",
-
-
         ]
         selected_image = random.choice(lew_images)
         print(f'Sending Lew image: {selected_image}')
@@ -178,6 +176,31 @@ async def moody(ctx):
         await ctx.send(moody_image)
     except Exception as e:
         print(f'Error in !Moody command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
+# New Feature: Aaron
+@bot.command(name='Aaron')
+async def aaron(ctx):
+    try:
+        print(f'!Aaron command received in channel: {ctx.channel} by user: {ctx.author}')
+        aaron_images = [
+            "https://i.imgur.com/wicH2Hz.jpeg",
+            "https://i.imgur.com/M1umG2R.jpeg",
+            "https://i.imgur.com/lzZ5GU5.jpeg",
+            "https://i.imgur.com/adQ70ba.jpeg",
+            "https://i.imgur.com/YDbHL4Y.jpeg",
+            "https://i.imgur.com/rZOxtGZ.jpeg",
+
+
+
+
+
+        ]
+        selected_image = random.choice(aaron_images)
+        print(f'Sending Aaron image: {selected_image}')
+        await ctx.send(selected_image)
+    except Exception as e:
+        print(f'Error in !Aaron command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
 # Command to list all commands
