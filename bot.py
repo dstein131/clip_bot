@@ -1,8 +1,11 @@
 import os
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from dotenv import load_dotenv
 import random
+import asyncio
+from collections import defaultdict
+from datetime import datetime, timedelta
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -20,6 +23,9 @@ intents.guilds = True
 intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents, case_insensitive=True)
+
+# Tracking incorrect command usage
+incorrect_command_usage = defaultdict(lambda: {'count': 0, 'last_time': None, 'blocked_until': None})
 
 @bot.event
 async def on_ready():
@@ -190,11 +196,6 @@ async def aaron(ctx):
             "https://i.imgur.com/adQ70ba.jpeg",
             "https://i.imgur.com/YDbHL4Y.jpeg",
             "https://i.imgur.com/rZOxtGZ.jpeg",
-
-
-
-
-
         ]
         selected_image = random.choice(aaron_images)
         print(f'Sending Aaron image: {selected_image}')
@@ -225,10 +226,36 @@ async def on_message(message):
 # Error Handling
 @bot.event
 async def on_command_error(ctx, error):
-    print(f'Error: {error}')
-    if isinstance(error, commands.CommandNotFound):
+    user = ctx.author
+
+    if user.name == 'sirvosef':
         await ctx.send("Command not found. Type `!List` to see all available commands.")
+        return
+
+    now = datetime.now()
+    user_data = incorrect_command_usage[user.id]
+    
+    # Check if user is blocked
+    if user_data['blocked_until'] and now < user_data['blocked_until']:
+        await ctx.send("You are temporarily blocked from using commands.")
+        return
+
+    # Reset the count if more than 15 seconds have passed since the last incorrect command
+    if user_data['last_time'] and (now - user_data['last_time']).seconds > 15:
+        user_data['count'] = 0
+
+    user_data['count'] += 1
+    user_data['last_time'] = now
+
+    if user_data['count'] >= 2:
+        await ctx.send("Don't be a dumb dumb")
+        user_data['blocked_until'] = now + timedelta(minutes=30)
+        user_data['count'] = 0
     else:
+        await ctx.send("Command not found. Type `!List` to see all available commands.")
+    
+    print(f'Error: {error}')
+    if not isinstance(error, commands.CommandNotFound):
         await ctx.send("An error occurred.")
         raise error
 
