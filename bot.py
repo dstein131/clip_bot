@@ -234,10 +234,11 @@ async def on_message(message):
     if message.author.name == 'regalsalvatore' and not message.author.bot:
         await message.channel.send('jajajajaja')
     if message.author.name == 'natclo5710' and not message.author.bot:
-        if random.random() < 0.05:  # 5% chance
+        if random.random() < 0.15:  # 15% chance
             await message.add_reaction('🇬')
             await message.add_reaction('🇦')
             await message.add_reaction('🇾')
+
 
 # Error Handling
 @bot.event
