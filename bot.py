@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 import random
 from collections import defaultdict
 from datetime import datetime, timedelta
+from bot_control import BotControl, check_bot_active, rate_limit  # Import from the new module
+import fun_commands  # Import the fun commands
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -25,259 +27,45 @@ bot = commands.Bot(command_prefix='!', intents=intents, case_insensitive=True)
 
 # Tracking incorrect command usage
 incorrect_command_usage = defaultdict(lambda: {'count': 0, 'last_time': None, 'blocked_until': None})
-bot_active = True
+bot_control = BotControl()
 
 @bot.event
 async def on_ready():
     print(f'Bot is ready. Logged in as {bot.user}')
+    fun_commands.setup(bot)  # Setup fun commands
 
 # Command to turn the bot on and off
 @bot.command(name='toggle_bot')
 async def toggle_bot(ctx):
-    global bot_active
     if ctx.author.name == 'sirvosef':
-        bot_active = not bot_active
-        state = "on" if bot_active else "off"
+        state = "on" if bot_control.toggle_bot() else "off"
         await ctx.send(f"The bot is now {state}.")
     else:
         await ctx.send("Only Lord Vosef may do this.")
 
-# Fun Feature: Kek
-@bot.command(name='kek')
-async def kek(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    if ctx.author.name != 'sirvosef':
+# Command to turn the protection mode on and off
+@bot.command(name='toggle_protection')
+async def toggle_protection(ctx):
+    if ctx.author.name == 'sirvosef':
+        state = "on" if bot_control.toggle_protection() else "off"
+        await ctx.send(f"Protection mode is now {state}.")
+    else:
         await ctx.send("Only Lord Vosef may do this.")
-        return
 
-    try:
-        print(f'!kek command received in channel: {ctx.channel} by user: {ctx.author}')
-        memes = [
-            "https://i.imgur.com/tCVnQmi.jpeg",
-            "https://i.imgur.com/V08th3K.jpeg",
-            "https://i.imgur.com/4iwihon.jpeg",
-            "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg"
-        ]
-        selected_meme = random.choice(memes)
-        print(f'Sending meme: {selected_meme}')
-        await ctx.send(selected_meme)
-    except Exception as e:
-        print(f'Error in !kek command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: April
-@bot.command(name='April')
-async def april(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!April command received in channel: {ctx.channel} by user: {ctx.author}')
-        april_images = [
-            "https://i.imgur.com/JJVOpgz.png",
-            "https://i.imgur.com/r95GXHQ.png",
-            "https://i.imgur.com/k6FatNM.png",
-            "https://i.imgur.com/BGvYhvE.jpeg",
-            "https://i.imgur.com/3xqTqpq.gif",
-            "https://i.imgur.com/NE9BsRN.jpeg",
-            "https://i.imgur.com/922Bazc.gif",
-        ]
-        selected_image = random.choice(april_images)
-        print(f'Sending April image: {selected_image}')
-        await ctx.send(selected_image)
-    except Exception as e:
-        print(f'Error in !April command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: Nic
-@bot.command(name='Nic')
-async def nic(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!nic command received in channel: {ctx.channel} by user: {ctx.author}')
-        nic_images = [
-            "https://i.imgur.com/ohG24kL.gif",
-            "https://i.imgur.com/fJETMJf.gif",
-        ]
-        selected_image = random.choice(nic_images)
-        print(f'Sending Nic image: {selected_image}')
-        await ctx.send(selected_image)
-    except Exception as e:
-        print(f'Error in !nic command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: Lew
-@bot.command(name='Lew')
-async def lew(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!lew command received in channel: {ctx.channel} by user: {ctx.author}')
-        lew_images = [
-            "https://i.imgur.com/ucJ1W0y.gif",
-            "https://i.imgur.com/cvxUeHO.png",
-            "https://i.imgur.com/8QKPnX4.jpeg",
-            "https://i.imgur.com/vmt0pqa.jpeg",
-            "https://i.imgur.com/TJEyVCr.jpeg",
-            "https://i.imgur.com/vKXqnXl.png",
-            "https://i.imgur.com/blS4QRI.jpeg",
-            "https://i.imgur.com/OvJLNDp.png",
-            "https://i.imgur.com/qFvZ7Xp.png",
-            "https://i.imgur.com/l417K0B.png",
-            "https://i.imgur.com/POpymIg.png",
-            "https://i.imgur.com/GqBHXBF.png",
-            "https://i.imgur.com/kS94IHL.jpeg",
-            "https://i.imgur.com/gSPtcgi.png",
-            "https://i.imgur.com/dvdQxo8.png",
-            "https://i.imgur.com/njKACDR.png",
-
-
-        ]
-        selected_image = random.choice(lew_images)
-        print(f'Sending Lew image: {selected_image}')
-        await ctx.send(selected_image)
-    except Exception as e:
-        print(f'Error in !lew command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: Vosef
-@bot.command(name='Vosef')
-async def vosef(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!Vosef command received in channel: {ctx.channel} by user: {ctx.author}')
-        vosef_images = [
-            "https://i.imgur.com/N5RwnLZ.jpeg"
-        ]
-        selected_image = random.choice(vosef_images)
-        print(f'Sending Vosef image: {selected_image}')
-        await ctx.send(selected_image)
-    except Exception as e:
-        print(f'Error in !Vosef command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: SteelToe
-@bot.command(name='SteelToe')
-async def steeltoe(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!SteelToe command received in channel: {ctx.channel} by user: {ctx.author}')
-        await ctx.send("https://www.youtube.com/watch?v=0WAghhHjGA0&list=PLmXO3OWrzyK2lrh9wsL3ITq9oUcVgoZZS")
-    except Exception as e:
-        print(f'Error in !SteelToe command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: Felicia
-@bot.command(name='Felicia')
-async def felicia(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!Felicia command received in channel: {ctx.channel} by user: {ctx.author}')
-        felicia_images = [
-            "https://i.imgur.com/H2l18ml.gif",
-            "https://i.imgur.com/PTPhfBq.png"
-        ]
-        selected_image = random.choice(felicia_images)
-        print(f'Sending Felicia image: {selected_image}')
-        await ctx.send(selected_image)
-    except Exception as e:
-        print(f'Error in !Felicia command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: KB
-@bot.command(name='KB')
-async def kb(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!KB command received in channel: {ctx.channel} by user: {ctx.author}')
-        kb_images = [
-            "https://imgur.com/yOIsxni",
-            "https://i.imgur.com/nXszoyR.png",
-            "https://i.imgur.com/QxjvzQx.png",
-            "https://i.imgur.com/hknTfbn.jpeg",
-            "https://i.imgur.com/JmU55LM.png",
-        ]
-        selected_image = random.choice(kb_images)
-        print(f'Sending KB image: {selected_image}')
-        await ctx.send(selected_image)
-    except Exception as e:
-        print(f'Error in !KB command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: Moody
-@bot.command(name='Moody')
-async def moody(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!Moody command received in channel: {ctx.channel} by user: {ctx.author}')
-        moody_image = "https://i.imgur.com/NvXIKbQ.jpeg"
-        print(f'Sending Moody image: {moody_image}')
-        await ctx.send(moody_image)
-    except Exception as e:
-        print(f'Error in !Moody command: {e}')
-        await ctx.send("An error occurred while processing the command.")
-
-# New Feature: Aaron
-@bot.command(name='Aaron')
-async def aaron(ctx):
-    if not bot_active:
-        await ctx.send("The bot is currently off.")
-        return
-
-    try:
-        print(f'!Aaron command received in channel: {ctx.channel} by user: {ctx.author}')
-        aaron_images = [
-            "https://i.imgur.com/wicH2Hz.jpeg",
-            "https://i.imgur.com/M1umG2R.jpeg",
-            "https://i.imgur.com/lzZ5GU5.jpeg",
-            "https://i.imgur.com/adQ70ba.jpeg",
-            "https://i.imgur.com/YDbHL4Y.jpeg",
-            "https://i.imgur.com/rZOxtGZ.jpeg",
-            "https://i.imgur.com/LUIBmKi.gif",
-            "https://i.imgur.com/jbULtGw.jpeg",
-            "https://i.imgur.com/GkTXkhb.jpeg",
-            "https://i.imgur.com/4N2SgmF.png",
-            "https://i.imgur.com/fvyRGhd.png",
-            "https://i.imgur.com/Sni6RYQ.jpeg",
-        ]
-        selected_image = random.choice(aaron_images)
-        print(f'Sending Aaron image: {selected_image}')
-        await ctx.send(selected_image)
-    except Exception as e:
-        print(f'Error in !Aaron command: {e}')
-        await ctx.send("An error occurred while processing the command.")
+# Command to activate protection mode for 30 minutes
+@bot.command(name='activate_protection_30')
+async def activate_protection_30(ctx):
+    if ctx.author.name == 'sirvosef':
+        bot_control.activate_protection_for_30_minutes()
+        await ctx.send("Protection mode is now on for 30 minutes.")
+    else:
+        await ctx.send("Only Lord Vosef may do this.")
 
 # Command to list all commands
 @bot.command(name='List')
+@check_bot_active()
+@rate_limit()
 async def list_commands(ctx):
-    if not bot_active and ctx.author.name != 'sirvosef':
-        await ctx.send("The bot is currently off.")
-        return
-
     commands_list = sorted([command.name for command in bot.commands if command.name not in ['kek', 'help']])
     commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
@@ -285,7 +73,25 @@ async def list_commands(ctx):
 # Respond to specific commands
 @bot.event
 async def on_message(message):
-    if not bot_active and message.author.name != 'sirvosef':
+    if not bot_control.bot_active and message.author.name != 'sirvosef':
+        return
+
+    if bot_control.protection_mode and bot_control.check_message(message.author.id, message):
+        await message.channel.send("You are sending messages too quickly. Please slow down.")
+        
+        # Delete user's messages
+        user_messages = bot_control.get_user_messages(message.author.id)
+        for msg in user_messages:
+            try:
+                await msg.delete()
+            except discord.NotFound:
+                continue
+        
+        # Clear user messages from the record
+        bot_control.clear_user_messages(message.author.id)
+        
+        # Kick the user from the server
+        await message.author.kick(reason="Spamming messages")
         return
 
     # Check if the message starts with any of the specified commands
@@ -309,7 +115,7 @@ async def on_message(message):
 # Error Handling
 @bot.event
 async def on_command_error(ctx, error):
-    if not bot_active and ctx.author.name != 'sirvosef':
+    if not bot_control.bot_active and ctx.author.name != 'sirvosef':
         await ctx.send("The bot is currently off.")
         return
 
