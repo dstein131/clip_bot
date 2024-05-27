@@ -26,14 +26,30 @@ bot = commands.Bot(command_prefix='!', intents=intents, case_insensitive=True)
 
 # Tracking incorrect command usage
 incorrect_command_usage = defaultdict(lambda: {'count': 0, 'last_time': None, 'blocked_until': None})
+bot_active = True
 
 @bot.event
 async def on_ready():
     print(f'Bot is ready. Logged in as {bot.user}')
 
+# Command to turn the bot on and off
+@bot.command(name='toggle_bot')
+async def toggle_bot(ctx):
+    global bot_active
+    if ctx.author.name == 'sirvosef':
+        bot_active = not bot_active
+        state = "on" if bot_active else "off"
+        await ctx.send(f"The bot is now {state}.")
+    else:
+        await ctx.send("Only Lord Vosef may do this.")
+
 # Fun Feature: Kek
 @bot.command(name='kek')
 async def kek(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     if ctx.author.name != 'sirvosef':
         await ctx.send("Only Lord Vosef may do this.")
         return
@@ -56,6 +72,10 @@ async def kek(ctx):
 # New Feature: April
 @bot.command(name='April')
 async def april(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!April command received in channel: {ctx.channel} by user: {ctx.author}')
         april_images = [
@@ -77,6 +97,10 @@ async def april(ctx):
 # New Feature: Nic
 @bot.command(name='Nic')
 async def nic(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!nic command received in channel: {ctx.channel} by user: {ctx.author}')
         nic_images = [
@@ -93,6 +117,10 @@ async def nic(ctx):
 # New Feature: Lew
 @bot.command(name='Lew')
 async def lew(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!lew command received in channel: {ctx.channel} by user: {ctx.author}')
         lew_images = [
@@ -120,6 +148,10 @@ async def lew(ctx):
 # New Feature: Vosef
 @bot.command(name='Vosef')
 async def vosef(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!Vosef command received in channel: {ctx.channel} by user: {ctx.author}')
         vosef_images = [
@@ -135,6 +167,10 @@ async def vosef(ctx):
 # New Feature: SteelToe
 @bot.command(name='SteelToe')
 async def steeltoe(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!SteelToe command received in channel: {ctx.channel} by user: {ctx.author}')
         await ctx.send("https://www.youtube.com/watch?v=0WAghhHjGA0&list=PLmXO3OWrzyK2lrh9wsL3ITq9oUcVgoZZS")
@@ -145,6 +181,10 @@ async def steeltoe(ctx):
 # New Feature: Felicia
 @bot.command(name='Felicia')
 async def felicia(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!Felicia command received in channel: {ctx.channel} by user: {ctx.author}')
         felicia_images = [
@@ -161,6 +201,10 @@ async def felicia(ctx):
 # New Feature: KB
 @bot.command(name='KB')
 async def kb(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!KB command received in channel: {ctx.channel} by user: {ctx.author}')
         kb_images = [
@@ -179,6 +223,10 @@ async def kb(ctx):
 # New Feature: Moody
 @bot.command(name='Moody')
 async def moody(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!Moody command received in channel: {ctx.channel} by user: {ctx.author}')
         moody_image = "https://i.imgur.com/NvXIKbQ.jpeg"
@@ -191,6 +239,10 @@ async def moody(ctx):
 # New Feature: Aaron
 @bot.command(name='Aaron')
 async def aaron(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     try:
         print(f'!Aaron command received in channel: {ctx.channel} by user: {ctx.author}')
         aaron_images = [
@@ -206,7 +258,6 @@ async def aaron(ctx):
             "https://i.imgur.com/4N2SgmF.png",
             "https://i.imgur.com/fvyRGhd.png",
             "https://i.imgur.com/Sni6RYQ.jpeg",
-            
         ]
         selected_image = random.choice(aaron_images)
         print(f'Sending Aaron image: {selected_image}')
@@ -218,6 +269,10 @@ async def aaron(ctx):
 # Command to list all commands
 @bot.command(name='List')
 async def list_commands(ctx):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     commands_list = sorted([command.name for command in bot.commands if command.name not in ['kek', 'help']])
     commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
@@ -225,6 +280,9 @@ async def list_commands(ctx):
 # Respond to specific commands
 @bot.event
 async def on_message(message):
+    if not bot_active:
+        return
+
     # Check if the message starts with any of the specified commands
     forbidden_commands = ['!pussy', '!ass', '!tits', '!boobs', '!nudes', '!xxx', '!cock', '!porn', '!nudes', '!dick', '!fuck', '!shit']
     if message.content.lower() in forbidden_commands:
@@ -243,10 +301,13 @@ async def on_message(message):
             await message.add_reaction('🇦')
             await message.add_reaction('🇾')
 
-
 # Error Handling
 @bot.event
 async def on_command_error(ctx, error):
+    if not bot_active:
+        await ctx.send("The bot is currently off.")
+        return
+
     user = ctx.author
 
     if user.name == 'sirvosef':
