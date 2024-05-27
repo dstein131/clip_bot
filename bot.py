@@ -105,6 +105,7 @@ async def lew(ctx):
             "https://i.imgur.com/OvJLNDp.png",
             "https://i.imgur.com/qFvZ7Xp.png",
             "https://i.imgur.com/l417K0B.png",
+            "https://i.imgur.com/POpymIg.png",
         ]
         selected_image = random.choice(lew_images)
         print(f'Sending Lew image: {selected_image}')
@@ -199,6 +200,7 @@ async def aaron(ctx):
             "https://i.imgur.com/LUIBmKi.gif",
             "https://i.imgur.com/jbULtGw.jpeg",
             "https://i.imgur.com/GkTXkhb.jpeg",
+            
         ]
         selected_image = random.choice(aaron_images)
         print(f'Sending Aaron image: {selected_image}')
