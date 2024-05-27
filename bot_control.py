@@ -6,7 +6,7 @@ class BotControl:
     def __init__(self):
         self.bot_active = True
         self.protection_mode = False
-        self.message_timestamps = defaultdict(lambda: deque(maxlen=5))  # Changed to 5
+        self.message_timestamps = defaultdict(lambda: deque(maxlen=7))  # Default to 7 messages
         self.user_messages = defaultdict(list)
         self.join_timestamps = deque(maxlen=10)  # Track recent joins
 
@@ -16,10 +16,15 @@ class BotControl:
 
     def toggle_protection(self):
         self.protection_mode = not self.protection_mode
+        if self.protection_mode:
+            self.message_timestamps = defaultdict(lambda: deque(maxlen=5))  # Change to 5 messages in protection mode
+        else:
+            self.message_timestamps = defaultdict(lambda: deque(maxlen=7))  # Default to 7 messages
         return self.protection_mode
 
     def activate_protection_for_30_minutes(self):
         self.protection_mode = True
+        self.message_timestamps = defaultdict(lambda: deque(maxlen=5))  # Change to 5 messages in protection mode
         deactivate_protection_mode.start()
 
     def check_message(self, member_id, message):
@@ -27,7 +32,8 @@ class BotControl:
         timestamps = self.message_timestamps[member_id]
         timestamps.append(now)
         self.user_messages[member_id].append(message)
-        if len(timestamps) == 5 and (now - timestamps[0]).seconds < 10:  # Changed to 5 messages
+        limit = 5 if self.protection_mode else 7
+        if len(timestamps) == limit and (now - timestamps[0]).seconds < 10:
             return True  # Detected spamming
         return False
 
@@ -49,6 +55,7 @@ bot_control = BotControl()
 @tasks.loop(minutes=30, count=1)
 async def deactivate_protection_mode():
     bot_control.protection_mode = False
+    bot_control.message_timestamps = defaultdict(lambda: deque(maxlen=7))  # Default to 7 messages
 
 def check_bot_active():
     async def predicate(ctx):
