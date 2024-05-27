@@ -62,11 +62,11 @@ async def activate_protection_30(ctx):
         await ctx.send("Only Lord Vosef may do this.")
 
 # Command to list all commands
-@bot.command(name='List')
+@bot.command(name='list')
 @check_bot_active()
 @rate_limit()
 async def list_commands(ctx):
-    excluded_commands = ['toggle_bot', 'toggle_protection', 'activate_protection_30']
+    excluded_commands = ['toggle_bot', 'toggle_protection', 'activate_protection_30', 'kek']
     commands_list = sorted([command.name for command in bot.commands if command.name not in excluded_commands])
     commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
@@ -125,7 +125,7 @@ async def on_command_error(ctx, error):
     user = ctx.author
 
     if user.name == 'sirvosef':
-        await ctx.send("Command not found. Type `!List` to see all available commands.")
+        await ctx.send("Command not found. Type `!list` to see all available commands.")
         return
 
     now = datetime.now()
@@ -146,7 +146,7 @@ async def on_command_error(ctx, error):
         user_data['blocked_until'] = now + timedelta(minutes=30)
         user_data['count'] = 0
     else:
-        await ctx.send("Command not found. Type `!List` to see all available commands.")
+        await ctx.send("Command not found. Type `!list` to see all available commands.")
     
     print(f'Error: {error}')
     if not isinstance(error, commands.CommandNotFound):

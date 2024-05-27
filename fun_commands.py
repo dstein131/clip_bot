@@ -2,7 +2,7 @@ import random
 from discord.ext import commands
 from bot_control import check_bot_active, rate_limit
 
-# Fun Feature: Kek
+# Fun Feature: Kek (Excluded from !list)
 @commands.command(name='kek')
 @check_bot_active()
 @rate_limit()
@@ -27,7 +27,7 @@ async def kek(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: April
-@commands.command(name='April')
+@commands.command(name='april')
 @check_bot_active()
 @rate_limit()
 async def april(ctx):
@@ -52,7 +52,7 @@ async def april(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: Nic
-@commands.command(name='Nic')
+@commands.command(name='nic')
 @check_bot_active()
 @rate_limit()
 async def nic(ctx):
@@ -70,7 +70,7 @@ async def nic(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: Lew
-@commands.command(name='Lew')
+@commands.command(name='lew')
 @check_bot_active()
 @rate_limit()
 async def lew(ctx):
@@ -102,7 +102,7 @@ async def lew(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: Vosef
-@commands.command(name='Vosef')
+@commands.command(name='vosef')
 @check_bot_active()
 @rate_limit()
 async def vosef(ctx):
@@ -119,7 +119,7 @@ async def vosef(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: SteelToe
-@commands.command(name='SteelToe')
+@commands.command(name='steeltoe')
 @check_bot_active()
 @rate_limit()
 async def steeltoe(ctx):
@@ -131,7 +131,7 @@ async def steeltoe(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: Felicia
-@commands.command(name='Felicia')
+@commands.command(name='felicia')
 @check_bot_active()
 @rate_limit()
 async def felicia(ctx):
@@ -149,7 +149,7 @@ async def felicia(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: KB
-@commands.command(name='KB')
+@commands.command(name='kb')
 @check_bot_active()
 @rate_limit()
 async def kb(ctx):
@@ -170,7 +170,7 @@ async def kb(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: Moody
-@commands.command(name='Moody')
+@commands.command(name='moody')
 @check_bot_active()
 @rate_limit()
 async def moody(ctx):
@@ -184,7 +184,7 @@ async def moody(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: Aaron
-@commands.command(name='Aaron')
+@commands.command(name='aaron')
 @check_bot_active()
 @rate_limit()
 async def aaron(ctx):
