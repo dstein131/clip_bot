@@ -139,7 +139,7 @@ async def lew(ctx):
             "https://i.imgur.com/gSPtcgi.png",
             "https://i.imgur.com/dvdQxo8.png",
             "https://i.imgur.com/njKACDR.png",
-            
+
 
         ]
         selected_image = random.choice(lew_images)
@@ -216,6 +216,7 @@ async def kb(ctx):
             "https://i.imgur.com/nXszoyR.png",
             "https://i.imgur.com/QxjvzQx.png",
             "https://i.imgur.com/hknTfbn.jpeg",
+            "https://i.imgur.com/JmU55LM.png",
         ]
         selected_image = random.choice(kb_images)
         print(f'Sending KB image: {selected_image}')
