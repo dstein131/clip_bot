@@ -66,7 +66,8 @@ async def activate_protection_30(ctx):
 @check_bot_active()
 @rate_limit()
 async def list_commands(ctx):
-    commands_list = sorted([command.name for command in bot.commands if command.name not in ['kek', 'help']])
+    excluded_commands = ['toggle_bot', 'toggle_protection', 'activate_protection_30']
+    commands_list = sorted([command.name for command in bot.commands if command.name not in excluded_commands])
     commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
 
