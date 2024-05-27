@@ -99,8 +99,14 @@ async def on_message(message):
         # Clear user messages from the record
         bot_control.clear_user_messages(message.author.id)
         
-        # Kick the user from the server
-        await message.author.kick(reason="Spamming messages")
+        # New user check
+        join_time = message.author.joined_at
+        if (datetime.now() - join_time).days < 1:  # User joined within the last day
+            await message.author.kick(reason="Spamming messages")
+        else:
+            timeout_duration = timedelta(minutes=5)
+            until = datetime.now() + timeout_duration
+            await message.author.timeout(until=until, reason="Spamming messages")
         return
 
     # Process commands normally

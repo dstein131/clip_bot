@@ -6,7 +6,7 @@ class BotControl:
     def __init__(self):
         self.bot_active = True
         self.protection_mode = False
-        self.message_timestamps = defaultdict(lambda: deque(maxlen=5))
+        self.message_timestamps = defaultdict(lambda: deque(maxlen=5))  # Changed to 5
         self.user_messages = defaultdict(list)
         self.join_timestamps = deque(maxlen=10)  # Track recent joins
 
@@ -27,7 +27,7 @@ class BotControl:
         timestamps = self.message_timestamps[member_id]
         timestamps.append(now)
         self.user_messages[member_id].append(message)
-        if len(timestamps) == 5 and (now - timestamps[0]).seconds < 10:
+        if len(timestamps) == 5 and (now - timestamps[0]).seconds < 10:  # Changed to 5 messages
             return True  # Detected spamming
         return False
 
