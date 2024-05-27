@@ -295,7 +295,7 @@ async def on_message(message):
         if random.random() < 0.3:  # 30% chance
             await message.channel.send('jajajajaja')
     if message.author.name == 'natclo5710' and not message.author.bot:
-        if random.random() < 0.15:  # 15% chance
+        if random.random() < 0.25:  # 25% chance
             await message.add_reaction('🇬')
             await message.add_reaction('🇦')
             await message.add_reaction('🇾')
