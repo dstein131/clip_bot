@@ -268,7 +268,7 @@ async def aaron(ctx):
 # Command to list all commands
 @bot.command(name='List')
 async def list_commands(ctx):
-    if not bot_active:
+    if not bot_active and ctx.author.name != 'sirvosef':
         await ctx.send("The bot is currently off.")
         return
 
@@ -279,7 +279,7 @@ async def list_commands(ctx):
 # Respond to specific commands
 @bot.event
 async def on_message(message):
-    if not bot_active:
+    if not bot_active and message.author.name != 'sirvosef':
         return
 
     # Check if the message starts with any of the specified commands
@@ -303,7 +303,7 @@ async def on_message(message):
 # Error Handling
 @bot.event
 async def on_command_error(ctx, error):
-    if not bot_active:
+    if not bot_active and ctx.author.name != 'sirvosef':
         await ctx.send("The bot is currently off.")
         return
 
