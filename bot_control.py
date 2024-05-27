@@ -1,6 +1,5 @@
 from collections import defaultdict, deque
 from datetime import datetime, timedelta
-import discord
 from discord.ext import commands, tasks
 
 class BotControl:
@@ -9,6 +8,7 @@ class BotControl:
         self.protection_mode = False
         self.message_timestamps = defaultdict(lambda: deque(maxlen=5))
         self.user_messages = defaultdict(list)
+        self.join_timestamps = deque(maxlen=10)  # Track recent joins
 
     def toggle_bot(self):
         self.bot_active = not self.bot_active
@@ -36,6 +36,13 @@ class BotControl:
 
     def clear_user_messages(self, member_id):
         self.user_messages[member_id].clear()
+
+    def check_mass_join(self):
+        now = datetime.now()
+        self.join_timestamps.append(now)
+        if len(self.join_timestamps) == 10 and (now - self.join_timestamps[0]).seconds < 60:
+            return True  # Detected mass joining
+        return False
 
 bot_control = BotControl()
 

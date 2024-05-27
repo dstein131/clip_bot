@@ -71,6 +71,14 @@ async def list_commands(ctx):
     commands_string = "\n".join([f"!{command}" for command in commands_list])
     await ctx.send(f"```Available commands:\n{commands_string}```")
 
+@bot.event
+async def on_member_join(member):
+    if bot_control.check_mass_join():
+        bot_control.activate_protection_for_30_minutes()
+        channel = discord.utils.get(member.guild.text_channels, name='general')
+        if channel:
+            await channel.send("Mass joining detected! Protection mode activated for 30 minutes.")
+
 # Respond to specific commands
 @bot.event
 async def on_message(message):
@@ -95,13 +103,8 @@ async def on_message(message):
         await message.author.kick(reason="Spamming messages")
         return
 
-    # Check if the message starts with any of the specified commands
-    forbidden_commands = ['!pussy', '!ass', '!tits', '!boobs', '!nudes', '!xxx', '!cock', '!porn', '!nudes', '!dick', '!fuck', '!shit']
-    if message.content.lower() in forbidden_commands:
-        await message.channel.send('Go Pee Pee, Go Night Night Incel.')
-    else:
-        # Process commands normally
-        await bot.process_commands(message)
+    # Process commands normally
+    await bot.process_commands(message)
 
     # Additional responses to specific users
     if message.author.name == 'regalsalvatore' and not message.author.bot:
