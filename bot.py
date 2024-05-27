@@ -1,9 +1,8 @@
 import os
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands
 from dotenv import load_dotenv
 import random
-import asyncio
 from collections import defaultdict
 from datetime import datetime, timedelta
 
