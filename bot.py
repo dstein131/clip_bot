@@ -118,6 +118,16 @@ async def on_message(message):
             await message.add_reaction('🇬')
             await message.add_reaction('🇦')
             await message.add_reaction('🇾')
+        if message.author.name == 'raydevito.' and not message.author.bot:
+            await message.add_reaction('🇷')
+            await message.add_reaction('🇦')
+            await message.add_reaction('🇾')
+            await message.add_reaction('🇩')
+            await message.add_reaction('🇪')
+            await message.add_reaction('🇻')
+            await message.add_reaction('🇮')
+            await message.add_reaction('🇹')
+            await message.add_reaction('🇴')
 
 @bot.event
 async def on_command_error(ctx, error):
