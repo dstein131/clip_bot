@@ -56,7 +56,7 @@ async def toggle_protection(ctx):
 # Command to activate protection mode for 30 minutes
 @bot.command(name='activate_protection_30')
 async def activate_protection_30(ctx):
-    if ctx.author.name == 'sirvosef':
+    if ctx.author.name == 'sirvosef' or ctx.channel.name == 'private-server-discussion':
         bot_control.activate_protection_for_30_minutes()
         await ctx.send("Protection mode is now on for 30 minutes.")
     else:
