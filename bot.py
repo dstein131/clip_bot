@@ -107,9 +107,12 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+    # Additional responses to specific users
     if message.author.name == 'regalsalvatore' and not message.author.bot:
         if random.random() < 0.3:  # 30% chance
-            await message.channel.send('jajajajaja')
+            responses = ['jajajajaja', 'jojojojojo', 'jijijijiji', 'jejejejeje']
+            selected_response = random.choice(responses)
+            await message.channel.send(selected_response)
     if message.author.name == 'natclo5710' and not message.author.bot:
         if random.random() < 0.25:  # 25% chance
             await message.add_reaction('🇬')
