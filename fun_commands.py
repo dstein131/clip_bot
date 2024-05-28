@@ -95,6 +95,8 @@ async def lew(ctx):
             "https://i.imgur.com/njKACDR.png",
             "https://i.imgur.com/KhV1eGl.png",
             "https://i.imgur.com/ca9FvkV.gif",
+            "https://i.imgur.com/WbK0Uf0.png",
+            "https://i.imgur.com/sCuFLi6.png",
         ]
         selected_image = random.choice(lew_images)
         print(f'Sending Lew image: {selected_image}')
