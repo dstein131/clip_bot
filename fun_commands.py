@@ -43,6 +43,7 @@ async def april(ctx):
             "https://i.imgur.com/922Bazc.gif",
             "https://i.imgur.com/sj2u9H9.png",
             "https://i.imgur.com/r3YcsvQ.jpeg",
+            "https://i.imgur.com/KKrxCoZ.png",
         ]
         selected_image = random.choice(april_images)
         print(f'Sending April image: {selected_image}')
