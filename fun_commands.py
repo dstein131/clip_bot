@@ -213,6 +213,7 @@ async def aaron(ctx):
             "https://i.imgur.com/VhrI4ub.png",
             "https://i.imgur.com/BKN3Lep.png",
             "https://i.imgur.com/L5JAwvT.gif",
+            "https://i.imgur.com/wV0vLcr.png",
            
         ]
         selected_image = random.choice(aaron_images)
