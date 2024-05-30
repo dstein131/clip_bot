@@ -146,7 +146,8 @@ async def felicia(ctx):
         print(f'!Felicia command received in channel: {ctx.channel} by user: {ctx.author}')
         felicia_images = [
             "https://i.imgur.com/H2l18ml.gif",
-            "https://i.imgur.com/PTPhfBq.png"
+            "https://i.imgur.com/PTPhfBq.png",
+            "https://i.imgur.com/0OW42ZM.png",
         ]
         selected_image = random.choice(felicia_images)
         print(f'Sending Felicia image: {selected_image}')
