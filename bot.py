@@ -120,6 +120,7 @@ async def on_message(message):
             await message.add_reaction('🇦')
             await message.add_reaction('🇾')
     if message.author.name == 'raydevito.' and not message.author.bot:
+        if random.random() < 0.25:
             await message.add_reaction('🇷')
             await message.add_reaction('🇦')
             await message.add_reaction('🇾')
