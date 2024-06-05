@@ -8,16 +8,13 @@ from bot_control import check_bot_active, rate_limit
 @rate_limit()
 async def kek(ctx):
     if ctx.author.name != 'sirvosef':
-        await ctx.send("Only Lord Vosef may do this.")
+        await ctx.send(":frog:")
         return
 
     try:
         print(f'!kek command received in channel: {ctx.channel} by user: {ctx.author}')
         memes = [
-            "https://i.imgur.com/tCVnQmi.jpeg",
-            "https://i.imgur.com/V08th3K.jpeg",
-            "https://i.imgur.com/4iwihon.jpeg",
-            "https://www.thepinknews.com/wp-content/uploads/2021/04/Morrissey.jpg"
+            "https://i.imgur.com/XzfCveq.gif",
         ]
         selected_meme = random.choice(memes)
         print(f'Sending meme: {selected_meme}')
