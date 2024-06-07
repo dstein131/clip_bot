@@ -154,6 +154,7 @@ async def felicia(ctx):
             "https://i.imgur.com/H2l18ml.gif",
             "https://i.imgur.com/PTPhfBq.png",
             "https://i.imgur.com/0OW42ZM.png",
+            "https://i.imgur.com/LMtMdqp.jpeg",
         ]
         selected_image = random.choice(felicia_images)
         print(f'Sending Felicia image: {selected_image}')
