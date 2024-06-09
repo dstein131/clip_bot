@@ -195,6 +195,8 @@ async def moody(ctx):
         moody_images = [
             "https://i.imgur.com/NvXIKbQ.jpeg",
             "https://i.imgur.com/THWvdum.gif",
+            "https://i.imgur.com/2Bk5h46.gif",
+            "https://i.imgur.com/KFHsEdi.gif",
         ]
         selected_image = random.choice(moody_images)
         print(f'Sending Moody image: {selected_image}')
