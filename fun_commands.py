@@ -192,9 +192,13 @@ async def kb(ctx):
 async def moody(ctx):
     try:
         print(f'!Moody command received in channel: {ctx.channel} by user: {ctx.author}')
-        moody_image = "https://i.imgur.com/NvXIKbQ.jpeg"
-        print(f'Sending Moody image: {moody_image}')
-        await ctx.send(moody_image)
+        moody_images = [
+            "https://i.imgur.com/NvXIKbQ.jpeg",
+            "https://i.imgur.com/THWvdum.gif",
+        ]
+        selected_image = random.choice(moody_images)
+        print(f'Sending Moody image: {selected_image}')
+        await ctx.send(selected_image)
     except Exception as e:
         print(f'Error in !Moody command: {e}')
         await ctx.send("An error occurred while processing the command.")
