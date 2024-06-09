@@ -114,11 +114,8 @@ async def on_message(message):
             responses = ['jajajajaja', 'jojojojojo', 'jijijijiji', '哈哈哈哈哈哈', '嘻嘻嘻嘻嘻嘻', 'xīxīxīxīxī', 'tehehehe', 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋ', 'ㅎㅎㅎㅎㅎㅎㅎㅎㅎ', 'jejejejeje']
             selected_response = random.choice(responses)
             await message.channel.send(selected_response)
-    if message.author.name == 'natclo5710' and not message.author.bot:
-        if random.random() < 0.05:  # 25% chance
-            await message.add_reaction('🇬')
-            await message.add_reaction('🇦')
-            await message.add_reaction('🇾')
+    if message.author.name == 'pulper80' and not message.author.bot:
+        await message.add_reaction('😢')
     if message.author.name == 'raydevito.' and not message.author.bot:
         if random.random() < 0.25:
             await message.add_reaction('🇷')
