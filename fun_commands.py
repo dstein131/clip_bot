@@ -1,4 +1,5 @@
 import random
+import discord
 from discord.ext import commands
 from bot_control import check_bot_active, rate_limit
 
@@ -107,9 +108,23 @@ async def lew(ctx):
             "https://i.imgur.com/1AB8LWM.jpeg",
             "https://i.imgur.com/8X6gQq0.png",
         ]
-        selected_image = random.choice(lew_images)
-        print(f'Sending Lew image: {selected_image}')
-        await ctx.send(selected_image)
+        
+        lew_videos = [
+            "./videos/lewwho.mov",
+            # Add more video paths here if needed
+        ]
+        
+        # Combine images and videos into one list
+        lew_media = lew_images + lew_videos
+        selected_media = random.choice(lew_media)
+        
+        if selected_media in lew_images:
+            print(f'Sending Lew image: {selected_media}')
+            await ctx.send(selected_media)
+        else:
+            print(f'Sending Lew video: {selected_media}')
+            await ctx.send(file=discord.File(selected_media))
+            
     except Exception as e:
         print(f'Error in !lew command: {e}')
         await ctx.send("An error occurred while processing the command.")
