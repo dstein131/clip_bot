@@ -259,6 +259,32 @@ async def aaron(ctx):
         print(f'Error in !Aaron command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: MKE
+@commands.command(name='MKE')
+@check_bot_active()
+@rate_limit()
+async def mke(ctx):
+    try:
+        print(f'!MKE command received in channel: {ctx.channel} by user: {ctx.author}')
+        mke_images = [
+           "https://i.imgur.com/NtWJCqc.png",
+           "https://i.imgur.com/r8jyRMh.png",
+           "https://i.imgur.com/7GvXLuC.png",
+
+
+        ]
+        if not mke_images:
+            await ctx.send("No images available for MKE at the moment.")
+            return
+        
+        selected_image = random.choice(mke_images)
+        print(f'Sending MKE image: {selected_image}')
+        await ctx.send(selected_image)
+    except Exception as e:
+        print(f'Error in !MKE command: {e}')
+        await ctx.send("An error occurred while processing the command.")
+
+
 def setup(bot):
     bot.add_command(kek)
     bot.add_command(april)
@@ -270,3 +296,4 @@ def setup(bot):
     bot.add_command(kb)
     bot.add_command(moody)
     bot.add_command(aaron)
+    bot.add_command(mke)
