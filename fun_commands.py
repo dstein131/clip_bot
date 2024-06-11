@@ -260,29 +260,37 @@ async def aaron(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 # New Feature: MKE
-@commands.command(name='MKE')
+@commands.command(name='mke')
 @check_bot_active()
 @rate_limit()
 async def mke(ctx):
     try:
         print(f'!MKE command received in channel: {ctx.channel} by user: {ctx.author}')
         mke_images = [
-           "https://i.imgur.com/NtWJCqc.png",
-           "https://i.imgur.com/r8jyRMh.png",
-           "https://i.imgur.com/7GvXLuC.png",
-
-
+            "https://i.imgur.com/NtWJCqc.png",
+            "https://i.imgur.com/r8jyRMh.png",
+            "https://i.imgur.com/7GvXLuC.png",
         ]
-        if not mke_images:
-            await ctx.send("No images available for MKE at the moment.")
-            return
+
+        mke_videos = [
+            "./videos/TND_MKE.mov",
+        ]
         
-        selected_image = random.choice(mke_images)
-        print(f'Sending MKE image: {selected_image}')
-        await ctx.send(selected_image)
+        # Combine images and videos into one list
+        mke_media = mke_images + mke_videos
+        selected_media = random.choice(mke_media)
+        
+        if selected_media in mke_images:
+            print(f'Sending MKE image: {selected_media}')
+            await ctx.send(selected_media)
+        else:
+            print(f'Sending MKE video: {selected_media}')
+            await ctx.send(file=discord.File(selected_media))
+        
     except Exception as e:
         print(f'Error in !MKE command: {e}')
         await ctx.send("An error occurred while processing the command.")
+
 
 
 def setup(bot):
