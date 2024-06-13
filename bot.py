@@ -115,7 +115,7 @@ async def on_message(message):
             selected_response = random.choice(responses)
             await message.channel.send(selected_response)
     if message.author.name == 'pulper80' and not message.author.bot:
-        if random.random() < 0.2:  # 30% chance
+        if random.random() < 0.1:  # 30% chance
             await message.add_reaction('😢')
     if message.author.name == 'raydevito.' and not message.author.bot:
         if random.random() < 0.25:
