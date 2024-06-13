@@ -277,7 +277,7 @@ async def mke(ctx):
         ]
 
         mke_videos = [
-            "./videos/TND_MKE.mov",
+            # "./videos/TND_MKE.mov",
         ]
         
         # Combine images and videos into one list
