@@ -15,7 +15,7 @@ async def kek(ctx):
     try:
         print(f'!kek command received in channel: {ctx.channel} by user: {ctx.author}')
         memes = [
-            "https://i.imgur.com/slfAEC3.gif",
+            "https://i.imgur.com/ezA43qN.gif",
         ]
         selected_meme = random.choice(memes)
         print(f'Sending meme: {selected_meme}')
