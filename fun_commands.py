@@ -301,7 +301,28 @@ async def mke(ctx):
         print(f'Error in !MKE command: {e}')
         await ctx.send("An error occurred while processing the command.")
 
+# New Feature: ray
+@commands.command(name='ray')
+@check_bot_active()
+@rate_limit()
+async def ray(ctx):
+    try:
+        print(f'!ray command received in channel: {ctx.channel} by user: {ctx.author}')
+        ray_images = [
+            "https://i.imgur.com/Vf7tcWk.png",
+            "https://i.imgur.com/Vr1s4is.png",
+            "https://i.imgur.com/JQpYwMH.png",
+            "https://i.imgur.com/DEwiNtJ.png",
+            "https://i.imgur.com/BZOAHna.png",
 
+
+        ]
+        selected_image = random.choice(ray_images)
+        print(f'Sending ray image: {selected_image}')
+        await ctx.send(selected_image)
+    except Exception as e:
+        print(f'Error in !ray command: {e}')
+        await ctx.send("An error occurred while processing the command.")
 
 def setup(bot):
     bot.add_command(kek)
@@ -315,3 +336,4 @@ def setup(bot):
     bot.add_command(moody)
     bot.add_command(aaron)
     bot.add_command(mke)
+    bot.add_command(ray)
