@@ -112,6 +112,7 @@ async def lew(ctx):
         
         lew_videos = [
             "./videos/lewwho.mov",
+            "./videos/My_Movie_4.mov",
             # Add more video paths here if needed
         ]
         
