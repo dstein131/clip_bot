@@ -218,7 +218,6 @@ async def moody(ctx):
             "https://i.imgur.com/mpBqBks.png",
             "https://i.imgur.com/YFfDgx8.png",
             "https://i.imgur.com/HwRTje9.gif",
-            "https://i.imgur.com/b4t3MdW.gif",
             "https://i.imgur.com/rUl16NP.gif",
             "https://i.imgur.com/CbBx0L8.gif",
 
