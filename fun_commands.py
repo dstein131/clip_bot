@@ -218,7 +218,7 @@ async def moody(ctx):
             "https://i.imgur.com/mpBqBks.png",
             "https://i.imgur.com/YFfDgx8.png",
             "https://i.imgur.com/HwRTje9.gif",
-            "https://i.imgur.com/rUl16NP.gif",
+        
     
         ]
         selected_image = random.choice(moody_images)
