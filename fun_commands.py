@@ -113,6 +113,7 @@ async def lew(ctx):
             "https://i.imgur.com/QSmV65g.png",
             "https://i.imgur.com/77LpeIj.jpeg",
             "https://i.imgur.com/4UHVvzb.jpeg",
+            "https://i.imgur.com/LsxCN1H.gif",
         ]
         
         lew_videos = [
