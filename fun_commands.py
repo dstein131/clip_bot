@@ -204,9 +204,24 @@ async def kb(ctx):
             "https://i.imgur.com/mE6wLqV.jpeg",
             "https://i.imgur.com/ZMA00HT.gif",
         ]
-        selected_image = random.choice(kb_images)
-        print(f'Sending KB image: {selected_image}')
-        await ctx.send(selected_image)
+
+        kb_videos = [
+            "./videos/kbcough.mov",
+            "./videos/kbcummy.mov",
+            # Add more video file paths or URLs here
+        ]
+
+        # Combine images and videos into one list
+        kb_media = kb_images + kb_videos
+        selected_media = random.choice(kb_media)
+
+        if selected_media in kb_images:
+            print(f'Sending KB image: {selected_media}')
+            await ctx.send(selected_media)
+        else:
+            print(f'Sending KB video: {selected_media}')
+            await ctx.send(file=discord.File(selected_media))
+        
     except Exception as e:
         print(f'Error in !KB command: {e}')
         await ctx.send("An error occurred while processing the command.")
