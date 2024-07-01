@@ -286,6 +286,7 @@ async def aaron(ctx):
             "https://i.imgur.com/JP6KSx6.gif",
             "https://i.imgur.com/RI3pvc0.gif",
             "https://i.imgur.com/Qxp7sok.gif",
+            "https://i.imgur.com/eGwbgpk.jpeg",
 
            
         ]
