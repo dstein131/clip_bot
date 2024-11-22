@@ -81,9 +81,6 @@ async def on_message(message):
     # Prevent duplicate processing by only allowing non-bot messages
     if message.author.bot:
         return
-    # Prevent duplicate processing by only allowing non-bot messages
-    if message.author.bot:
-        return
     if not bot_control.bot_active and message.author.name != 'sirvosef':
         return
 
@@ -109,8 +106,6 @@ async def on_message(message):
         return
 
     await bot.process_commands(message)
-    # Ensure no further processing happens after command handling
-    # Ensure no further processing happens after command handling
 
     # Additional responses to specific users
     if message.author.name == 'regalsalvatore' and not message.author.bot:
