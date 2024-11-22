@@ -1,15 +1,19 @@
 import os
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
 import random
 from collections import defaultdict
 from datetime import datetime, timedelta
 from bot_control import BotControl, check_bot_active, rate_limit  # Import from the new module
 import fun_commands  # Import the fun commands
 
+# Load environment variables from a .env file
+load_dotenv()
+
 # Get the bot token from environment variable
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
-print(f"TOKEN: {TOKEN[:5]}..." if TOKEN else "No token provided.")
+print(f"TOKEN: {TOKEN}")
 
 if not TOKEN:
     raise ValueError("No token provided. Set the DISCORD_BOT_TOKEN environment variable.")
@@ -48,6 +52,7 @@ async def toggle_protection(ctx):
         await ctx.send(f"Protection mode is now {state}.")
     else:
         await ctx.send("Only Lord Vosef may do this.")
+
 
 # Command to activate protection mode for 30 minutes
 @bot.command(name='activate_protection_30')
@@ -106,17 +111,24 @@ async def on_message(message):
 
     # Additional responses to specific users
     if message.author.name == 'regalsalvatore' and not message.author.bot:
-        if random.random() < 0.1:  # 10% chance
+        if random.random() < 0.1:  # 30% chance
             responses = ['jajajajaja', 'jojojojojo', 'jijijijiji', '哈哈哈哈哈哈', '嘻嘻嘻嘻嘻嘻', 'xīxīxīxīxī', 'tehehehe', 'ㅋㅋㅋㅋㅋㅋㅋㅋㅋ', 'ㅎㅎㅎㅎㅎㅎㅎㅎㅎ', 'jejejejeje']
             selected_response = random.choice(responses)
             await message.channel.send(selected_response)
     if message.author.name == 'pulper80' and not message.author.bot:
-        if random.random() < 0.2:  # 20% chance
+        if random.random() < 0.2:  # 30% chance
             await message.add_reaction('😢')
     if message.author.name == 'raydevito.' and not message.author.bot:
-        if random.random() < 0.25:  # 25% chance
-            for emoji in ['🇷', '🇦', '🇾', '🇩', '🇪', '🇻', '🇮', '🇹', '🇴']:
-                await message.add_reaction(emoji)
+        if random.random() < 0.25:
+            await message.add_reaction('🇷')
+            await message.add_reaction('🇦')
+            await message.add_reaction('🇾')
+            await message.add_reaction('🇩')
+            await message.add_reaction('🇪')
+            await message.add_reaction('🇻')
+            await message.add_reaction('🇮')
+            await message.add_reaction('🇹')
+            await message.add_reaction('🇴')    
 
 @bot.event
 async def on_command_error(ctx, error):
