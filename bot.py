@@ -13,6 +13,7 @@ load_dotenv()
 
 # Get the bot token from environment variable
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+print(f"TOKEN: {TOKEN}")
 
 if not TOKEN:
     raise ValueError("No token provided. Set the DISCORD_BOT_TOKEN environment variable.")
