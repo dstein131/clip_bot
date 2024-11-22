@@ -123,6 +123,9 @@ async def on_message(message):
 
 @bot.event
 async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        return  # Do nothing if the command is not found
+    
     if not bot_control.bot_active and ctx.author.name != 'sirvosef':
         await ctx.send("The bot is currently off.")
         return
@@ -157,5 +160,6 @@ async def on_command_error(ctx, error):
     if not isinstance(error, commands.CommandNotFound):
         await ctx.send("An error occurred.")
         raise error
+
 
 bot.run(TOKEN)
