@@ -242,6 +242,7 @@ async def moody(ctx):
             "https://i.imgur.com/mpBqBks.png",
             "https://i.imgur.com/YFfDgx8.png",
             "https://i.imgur.com/HwRTje9.gif",
+            "https://imgur.com/a/cSgHPEf",
         
     
         ]
@@ -352,6 +353,8 @@ async def ray(ctx):
     except Exception as e:
         print(f'Error in !ray command: {e}')
         await ctx.send("An error occurred while processing the command.")
+
+
 
 def setup(bot):
     bot.add_command(kek)
